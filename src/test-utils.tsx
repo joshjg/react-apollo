@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ApolloClient from 'apollo-client';
 import { DefaultOptions } from 'apollo-client/ApolloClient';
-import { InMemoryCache as Cache } from 'apollo-cache-inmemory';
+import { InMemoryCache as Cache, ApolloReducerConfig } from 'apollo-cache-inmemory';
 
 import { ApolloProvider } from './index';
 import { MockedResponse, MockLink } from './test-links';
@@ -11,6 +11,7 @@ export interface MockedProviderProps {
   mocks?: MockedResponse[];
   addTypename?: boolean;
   defaultOptions?: DefaultOptions;
+  cacheOptions?: ApolloReducerConfig;
 }
 
 export interface MockedProviderState {
