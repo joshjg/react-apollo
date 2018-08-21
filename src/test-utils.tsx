@@ -20,14 +20,15 @@ export interface MockedProviderState {
 export class MockedProvider extends React.Component<MockedProviderProps, MockedProviderState> {
   public static defaultProps: MockedProviderProps = {
     addTypename: true,
+    cacheOptions: {},
   };
 
   constructor(props: MockedProviderProps) {
     super(props);
 
-    const { mocks, addTypename, defaultOptions } = this.props;
+    const { mocks, addTypename, defaultOptions, cacheOptions } = this.props;
     const client = new ApolloClient({
-      cache: new Cache({ addTypename }),
+      cache: new Cache({ addTypename, ...cacheOptions }),
       defaultOptions,
       link: new MockLink(mocks || [], addTypename),
     });
